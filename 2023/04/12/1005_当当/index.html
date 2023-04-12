@@ -4,16 +4,27 @@
   <meta charset="utf-8">
   
   
-  <title>Archiv: 2023 | Hexo博客</title>
+  <title>当当-面试题 | Hexo博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Juno个人博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo博客">
-<meta property="og:url" content="https://luozuishuai.github.io/archives/2023/index.html">
+  <meta name="description" content="Java基础1 CAS原理及实现2 AQS原理及实现？JUC下的应用？3 线程池参数？流程描述？4 JDK7 HashMap成环的原因5 垃圾回收机制 GC Roots 可达性分析 分代算法 标记清除 标记整理   CMS G1  6 引用类型 强引用 弱引用 软引用 虚引用  Redis1 Redis数据类型1.1 8种数据类型1.2 string类型 底层实现2 持久化 RDB AOF  3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="当当-面试题">
+<meta property="og:url" content="https://luozuishuai.github.io/2023/04/12/1005_%E5%BD%93%E5%BD%93/index.html">
 <meta property="og:site_name" content="Hexo博客">
-<meta property="og:description" content="Juno个人博客">
+<meta property="og:description" content="Java基础1 CAS原理及实现2 AQS原理及实现？JUC下的应用？3 线程池参数？流程描述？4 JDK7 HashMap成环的原因5 垃圾回收机制 GC Roots 可达性分析 分代算法 标记清除 标记整理   CMS G1  6 引用类型 强引用 弱引用 软引用 虚引用  Redis1 Redis数据类型1.1 8种数据类型1.2 string类型 底层实现2 持久化 RDB AOF  3">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-04-12T11:40:04.000Z">
+<meta property="article:modified_time" content="2023-04-12T12:30:08.871Z">
 <meta property="article:author" content="Juno">
+<meta property="article:tag" content="GC">
+<meta property="article:tag" content="分布式锁">
+<meta property="article:tag" content="CAS">
+<meta property="article:tag" content="AQS">
+<meta property="article:tag" content="线程池">
+<meta property="article:tag" content="HashMap">
+<meta property="article:tag" content="引用类型">
+<meta property="article:tag" content="Redis">
+<meta property="article:tag" content="RocketMQ">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Hexo博客" type="application/atom+xml">
@@ -71,216 +82,130 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/1003_%E5%AD%97%E8%8A%82/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
+        <section id="main"><article id="post-1005_当当" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/04/12/1005_%E5%BD%93%E5%BD%93/" class="article-date">
+  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">2023-04-12</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/1003_%E5%AD%97%E8%8A%82/">字节-面试题</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      当当-面试题
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/1001_%E5%A4%A9%E7%9C%BC%E6%9F%A5/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/1001_%E5%A4%A9%E7%9C%BC%E6%9F%A5/">天眼查-面试题</a>
-    </h1>
-  
+        <h3 id="Java基础"><a href="#Java基础" class="headerlink" title="Java基础"></a>Java基础</h3><h4 id="1-CAS原理及实现"><a href="#1-CAS原理及实现" class="headerlink" title="1 CAS原理及实现"></a>1 CAS原理及实现</h4><h4 id="2-AQS原理及实现？JUC下的应用？"><a href="#2-AQS原理及实现？JUC下的应用？" class="headerlink" title="2 AQS原理及实现？JUC下的应用？"></a>2 AQS原理及实现？JUC下的应用？</h4><h4 id="3-线程池参数？流程描述？"><a href="#3-线程池参数？流程描述？" class="headerlink" title="3 线程池参数？流程描述？"></a>3 线程池参数？流程描述？</h4><h4 id="4-JDK7-HashMap成环的原因"><a href="#4-JDK7-HashMap成环的原因" class="headerlink" title="4 JDK7 HashMap成环的原因"></a>4 JDK7 HashMap成环的原因</h4><h4 id="5-垃圾回收机制"><a href="#5-垃圾回收机制" class="headerlink" title="5 垃圾回收机制"></a>5 垃圾回收机制</h4><ul>
+<li>GC Roots 可达性分析</li>
+<li>分代算法</li>
+<li>标记清除</li>
+<li>标记整理  </li>
+<li>CMS</li>
+<li>G1</li>
+</ul>
+<h4 id="6-引用类型"><a href="#6-引用类型" class="headerlink" title="6 引用类型"></a>6 引用类型</h4><ul>
+<li>强引用</li>
+<li>弱引用</li>
+<li>软引用</li>
+<li>虚引用</li>
+</ul>
+<h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><h4 id="1-Redis数据类型"><a href="#1-Redis数据类型" class="headerlink" title="1 Redis数据类型"></a>1 Redis数据类型</h4><h5 id="1-1-8种数据类型"><a href="#1-1-8种数据类型" class="headerlink" title="1.1 8种数据类型"></a>1.1 8种数据类型</h5><h5 id="1-2-string类型-底层实现"><a href="#1-2-string类型-底层实现" class="headerlink" title="1.2 string类型 底层实现"></a>1.2 string类型 底层实现</h5><h4 id="2-持久化"><a href="#2-持久化" class="headerlink" title="2 持久化"></a>2 持久化</h4><ul>
+<li>RDB</li>
+<li>AOF</li>
+</ul>
+<h4 id="3-Redis集群复制原理"><a href="#3-Redis集群复制原理" class="headerlink" title="3 Redis集群复制原理"></a>3 Redis集群复制原理</h4><h4 id="4-Redis集群方案对比"><a href="#4-Redis集群方案对比" class="headerlink" title="4 Redis集群方案对比"></a>4 Redis集群方案对比</h4><ul>
+<li>主从模式</li>
+<li>哨兵模式</li>
+<li>Redis Cluster</li>
+</ul>
+<h4 id="5-缓存雪崩-缓存穿透-原理及解决方法？"><a href="#5-缓存雪崩-缓存穿透-原理及解决方法？" class="headerlink" title="5 缓存雪崩 缓存穿透 原理及解决方法？"></a>5 缓存雪崩 缓存穿透 原理及解决方法？</h4><h5 id="5-1-布隆过滤器"><a href="#5-1-布隆过滤器" class="headerlink" title="5.1 布隆过滤器"></a>5.1 布隆过滤器</h5><h4 id="6-分布式锁"><a href="#6-分布式锁" class="headerlink" title="6 分布式锁"></a>6 分布式锁</h4><h4 id="7-缓存淘汰机制"><a href="#7-缓存淘汰机制" class="headerlink" title="7 缓存淘汰机制"></a>7 缓存淘汰机制</h4><h3 id="RocketMQ"><a href="#RocketMQ" class="headerlink" title="RocketMQ"></a>RocketMQ</h3><h4 id="1-简单介绍技术架构"><a href="#1-简单介绍技术架构" class="headerlink" title="1 简单介绍技术架构"></a>1 简单介绍技术架构</h4><h4 id="2-顺序消费"><a href="#2-顺序消费" class="headerlink" title="2 顺序消费"></a>2 顺序消费</h4><h4 id="3-事务消息"><a href="#3-事务消息" class="headerlink" title="3 事务消息"></a>3 事务消息</h4><h4 id="4-消息重投"><a href="#4-消息重投" class="headerlink" title="4 消息重投"></a>4 消息重投</h4><h4 id="5-消息重试"><a href="#5-消息重试" class="headerlink" title="5 消息重试"></a>5 消息重试</h4><h4 id="6-死信队列"><a href="#6-死信队列" class="headerlink" title="6 死信队列"></a>6 死信队列</h4><h3 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h3><h4 id="1-InnoDB和MyISAM的区别"><a href="#1-InnoDB和MyISAM的区别" class="headerlink" title="1 InnoDB和MyISAM的区别"></a>1 InnoDB和MyISAM的区别</h4><h4 id="2-ACID"><a href="#2-ACID" class="headerlink" title="2 ACID"></a>2 ACID</h4><h4 id="3-三大范式"><a href="#3-三大范式" class="headerlink" title="3 三大范式"></a>3 三大范式</h4><h4 id="4-MVCC"><a href="#4-MVCC" class="headerlink" title="4 MVCC"></a>4 MVCC</h4><h4 id="5-表锁-行锁-页级锁-间隙琐"><a href="#5-表锁-行锁-页级锁-间隙琐" class="headerlink" title="5 表锁 行锁 页级锁 间隙琐"></a>5 表锁 行锁 页级锁 间隙琐</h4><h4 id="6-B-树和B树的区别"><a href="#6-B-树和B树的区别" class="headerlink" title="6 B+树和B树的区别"></a>6 B+树和B树的区别</h4><h4 id="7-为什么选择B-树，而不是哈希表，B树？"><a href="#7-为什么选择B-树，而不是哈希表，B树？" class="headerlink" title="7 为什么选择B+树，而不是哈希表，B树？"></a>7 为什么选择B+树，而不是哈希表，B树？</h4><h4 id="8-索引失效"><a href="#8-索引失效" class="headerlink" title="8 索引失效"></a>8 索引失效</h4><h4 id="9-索引优化"><a href="#9-索引优化" class="headerlink" title="9 索引优化"></a>9 索引优化</h4><ul>
+<li>熟悉explain的各字段的含义</li>
+</ul>
+<h4 id="10-组合索引的数据结构"><a href="#10-组合索引的数据结构" class="headerlink" title="10 组合索引的数据结构"></a>10 组合索引的数据结构</h4><ul>
+<li>(a,b) 叶子节点排列顺序应该是先按照a进行排序，排序完成后再按照b进行排序，所以应该是a是全局有序，b是a中有序，所以可满足a,(a,b)为条件的查询</li>
+</ul>
+<h3 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h3><h4 id="1-CAP理论"><a href="#1-CAP理论" class="headerlink" title="1 CAP理论"></a>1 CAP理论</h4><h4 id="2-dubbo和feign的对比"><a href="#2-dubbo和feign的对比" class="headerlink" title="2 dubbo和feign的对比"></a>2 dubbo和feign的对比</h4><h4 id="3-描述一下dubbo的工作中流程"><a href="#3-描述一下dubbo的工作中流程" class="headerlink" title="3 描述一下dubbo的工作中流程"></a>3 描述一下dubbo的工作中流程</h4><ul>
+<li>服务注册</li>
+<li>服务发现</li>
+<li>服务调用</li>
+<li>服务降级</li>
+<li>负载均衡</li>
+</ul>
+<h4 id="4-eureka-nacos-zookeeper"><a href="#4-eureka-nacos-zookeeper" class="headerlink" title="4 eureka nacos zookeeper"></a>4 eureka nacos zookeeper</h4><ul>
+<li>eureka集群 AP</li>
+<li>zookeeper集群 CP</li>
+<li>nacos集群 可AP，可CP</li>
+</ul>
+<h4 id="5-Hystrix-服务降级"><a href="#5-Hystrix-服务降级" class="headerlink" title="5 Hystrix 服务降级"></a>5 Hystrix 服务降级</h4><ul>
+<li>依赖隔离策略<ul>
+<li>线程池隔离</li>
+<li>信号量隔离</li>
+</ul>
+</li>
+</ul>
+<h4 id="6-服务熔断"><a href="#6-服务熔断" class="headerlink" title="6 服务熔断"></a>6 服务熔断</h4><h4 id="7-Eureka"><a href="#7-Eureka" class="headerlink" title="7 Eureka"></a>7 Eureka</h4><ul>
+<li>服务注册</li>
+<li>服务同步</li>
+<li>服务续约</li>
+<li>服务启动</li>
+<li>服务下线</li>
+<li>服务发现</li>
+<li>服务失效剔除</li>
+</ul>
+<h4 id="8-分布式事务"><a href="#8-分布式事务" class="headerlink" title="8 分布式事务"></a>8 分布式事务</h4><ul>
+<li>2PC</li>
+<li>3PC</li>
+<li>TCC</li>
+</ul>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/1002_%E7%90%86%E6%83%B3%E6%B1%BD%E8%BD%A6/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/1002_%E7%90%86%E6%83%B3%E6%B1%BD%E8%BD%A6/">理想汽车-面试题</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/1005_%E5%BD%93%E5%BD%93/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://luozuishuai.github.io/2023/04/12/1005_%E5%BD%93%E5%BD%93/" data-id="clgdnr1ut000354ujastx0exc" data-title="当当-面试题" class="article-share-link">Teilen</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/1005_%E5%BD%93%E5%BD%93/">当当-面试题</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/1004_%E7%BE%8E%E5%9B%A2/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/1004_%E7%BE%8E%E5%9B%A2/">美团-面试题</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">并发编程的基础知识</a>
-    </h1>
-  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AQS/" rel="tag">AQS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CAS/" rel="tag">CAS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GC/" rel="tag">GC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HashMap/" rel="tag">HashMap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RocketMQ/" rel="tag">RocketMQ</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/" rel="tag">分布式锁</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/" rel="tag">引用类型</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" rel="tag">线程池</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/04/12/1002_%E7%90%86%E6%83%B3%E6%B1%BD%E8%BD%A6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          理想汽车-面试题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/04/12/1004_%E7%BE%8E%E5%9B%A2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">美团-面试题</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/%E7%A7%92%E6%9D%80%E8%AE%BE%E8%AE%A1/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/%E7%A7%92%E6%9D%80%E8%AE%BE%E8%AE%A1/">秒杀设计</a>
-    </h1>
-  
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/%E6%9C%AC%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84SQL%E8%AF%AD%E5%8F%A5%E9%80%BB%E8%BE%91%E6%95%B4%E7%90%86/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/%E6%9C%AC%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84SQL%E8%AF%AD%E5%8F%A5%E9%80%BB%E8%BE%91%E6%95%B4%E7%90%86/">本项目中的SQL语句逻辑整理</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/">策略模式介绍以及简单示例</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3%E5%AE%9E%E7%8E%B0%E6%8E%A5%E5%8F%A3%E9%99%90%E6%B5%81%EF%BC%88%E6%8E%A5%E5%8F%A3%E9%98%B2%E5%88%B7%EF%BC%89/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3%E5%AE%9E%E7%8E%B0%E6%8E%A5%E5%8F%A3%E9%99%90%E6%B5%81%EF%BC%88%E6%8E%A5%E5%8F%A3%E9%98%B2%E5%88%B7%EF%BC%89/">自定义注解实现接口限流（接口防刷）</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2023/page/2/">2</a><a class="extend next" rel="next" href="/archives/2023/page/2/">weiter &raquo;</a>
-  </nav>
 
 </section>
         

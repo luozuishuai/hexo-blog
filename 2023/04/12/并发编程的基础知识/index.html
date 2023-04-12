@@ -4,17 +4,27 @@
   <meta charset="utf-8">
   
   
-  <title>Archiv: 2023 | Hexo博客</title>
+  <title>并发编程的基础知识 | Hexo博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Juno个人博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo博客">
-<meta property="og:url" content="https://luozuishuai.github.io/archives/2023/index.html">
+  <meta name="description" content="并发编程的基础知识Java中的CAS操作在Java中，锁在并发处理中占据了一席之地，但是使用锁有一个不好的地方，就是当一个线程没有获取到锁时会被阻塞挂起，这会导致线程上下文的切换和重新调度的开销。Java提供了非阻塞的volatile关键字来解决共享变量的可见性问题，这在一定程度上弥补了锁带来的开销问题，不能解决读-改-写等的原子性问题。CAS即Compare And Swap，是JDK提供的非阻">
+<meta property="og:type" content="article">
+<meta property="og:title" content="并发编程的基础知识">
+<meta property="og:url" content="https://luozuishuai.github.io/2023/04/12/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.html">
 <meta property="og:site_name" content="Hexo博客">
-<meta property="og:description" content="Juno个人博客">
+<meta property="og:description" content="并发编程的基础知识Java中的CAS操作在Java中，锁在并发处理中占据了一席之地，但是使用锁有一个不好的地方，就是当一个线程没有获取到锁时会被阻塞挂起，这会导致线程上下文的切换和重新调度的开销。Java提供了非阻塞的volatile关键字来解决共享变量的可见性问题，这在一定程度上弥补了锁带来的开销问题，不能解决读-改-写等的原子性问题。CAS即Compare And Swap，是JDK提供的非阻">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://luozuishuai.github.io/images/AQS%E5%8E%9F%E7%90%86%E5%9B%BE.png">
+<meta property="article:published_time" content="2023-04-12T11:40:04.000Z">
+<meta property="article:modified_time" content="2023-04-12T12:46:18.473Z">
 <meta property="article:author" content="Juno">
+<meta property="article:tag" content="并发">
+<meta property="article:tag" content="CAS">
+<meta property="article:tag" content="AQS">
+<meta property="article:tag" content="ABA">
+<meta property="article:tag" content="ReentrantLock">
+<meta property="article:tag" content="CountDownLatch">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://luozuishuai.github.io/images/AQS%E5%8E%9F%E7%90%86%E5%9B%BE.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo博客" type="application/atom+xml">
   
@@ -71,216 +81,123 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/1003_%E5%AD%97%E8%8A%82/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
+        <section id="main"><article id="post-并发编程的基础知识" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/04/12/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="article-date">
+  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">2023-04-12</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/">知识点</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/1003_%E5%AD%97%E8%8A%82/">字节-面试题</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      并发编程的基础知识
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/1001_%E5%A4%A9%E7%9C%BC%E6%9F%A5/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/1001_%E5%A4%A9%E7%9C%BC%E6%9F%A5/">天眼查-面试题</a>
-    </h1>
-  
+        <h1 id="并发编程的基础知识"><a href="#并发编程的基础知识" class="headerlink" title="并发编程的基础知识"></a>并发编程的基础知识</h1><h2 id="Java中的CAS操作"><a href="#Java中的CAS操作" class="headerlink" title="Java中的CAS操作"></a>Java中的CAS操作</h2><p>在Java中，锁在并发处理中占据了一席之地，但是使用锁有一个不好的地方，就是当一个线程没有获取到锁时会被阻塞挂起，这会导致线程上下文的切换和重新调度的开销。<br>Java提供了非阻塞的volatile关键字来解决共享变量的可见性问题，这在一定程度上弥补了锁带来的开销问题，不能解决读-改-写等的原子性问题。CAS即Compare And Swap，<br>是JDK提供的非阻塞原子性操作，它<strong>通过硬件保证了比较-更新的原子性</strong>。</p>
+<h3 id="compareAndSwap"><a href="#compareAndSwap" class="headerlink" title="compareAndSwap*"></a>compareAndSwap*</h3><p>JDK的Unsafe类提供了一系列的compareAndSwap*方法，下面以compareAndSwapLong为例 进行简单介绍。</br></p>
+<ul>
+<li>boolean compareAndSwapLong(Object obj, long valueOffset, long except, long update) </br><br>CAS有四个操作数，分别是：对象内存位置，对象中的变量的偏移量，变量的预期值，更新之后的值。其操作含义：如果对象obj中内存偏移量为valueOffset的变量值为except,<br>则使用新的值update替换旧的值except。这是<strong>处理器提供的一个原子性指令</strong>。</br></li>
+</ul>
+<h3 id="CAS自旋等待"><a href="#CAS自旋等待" class="headerlink" title="CAS自旋等待"></a>CAS自旋等待</h3><p>CAS自旋，一直尝试，直到成功。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="type">long</span> <span class="title function_">getAndAddLong</span><span class="params">(Object obj, <span class="type">long</span> valueOffset, <span class="type">long</span> add)</span> &#123;</span><br><span class="line">    <span class="type">long</span> except;</span><br><span class="line">    <span class="comment">// 自旋，一直尝试，直到成功</span></span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        except = <span class="built_in">this</span>.getLongVolatile(obj, valueOffset);</span><br><span class="line">    &#125; <span class="keyword">while</span>(!<span class="built_in">this</span>.compareAndSwapLong(obj, valueOffset, except, except + add));</span><br><span class="line">    <span class="keyword">return</span> except;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/1002_%E7%90%86%E6%83%B3%E6%B1%BD%E8%BD%A6/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
+<h3 id="ABA问题"><a href="#ABA问题" class="headerlink" title="ABA问题"></a>ABA问题</h3><p>假如线程I使用CAS修改初值值的变量X，那么线程I会首先去获取当前变量X的值（为A），然后使用CAS操作尝试修改X的值为B，如果使用CAS操作成功可，那么此时程序运行不一定正确。<br>可能在线程I获取变量X的值A后，在执行CAS前，线程II使用CAS修改了变量X的值为B，然后又使用CAS修改了变量X的值为A。虽然线程I执行CAS时的值是A，但是这个A已经不是线程I获<br>取时的A了。</br><br>ABA问题的产生是因为变量的状态值产生了环形转换，A-B-A。JDK中的AtomicStampedReference类为每个变量的状态值都配备了一个时间戳，从而避免ABA问题的产生。</br></p>
+<h2 id="什么是AQS"><a href="#什么是AQS" class="headerlink" title="什么是AQS"></a>什么是AQS</h2><p>AQS(Abstract Queued Synchronizer)是一个抽象的队列同步器，通过维护一个共享资源状态（Volatile Int state）和一个先进先出（FIFO）的线程等待队列来实现一个多线程<br>访问共享资源的同步框架。</br></p>
+<h3 id="AQS原理"><a href="#AQS原理" class="headerlink" title="AQS原理"></a>AQS原理</h3><p>AQS为每个共享资源都设置了一个共享资源锁，线程在需要访问共享资源时首先要获取共享资源锁，如果获取到了共享资源锁，便可以在当前线程中使用该共享资源，如果获取不到，则将该线程<br>放入线程等待队列，等待下一次资源调度。许多同步类的实现都依赖于AQS，比如常用的ReentrantLock、countDownLatch。</br><br><img src="/images/AQS%E5%8E%9F%E7%90%86%E5%9B%BE.png" alt="img.png"></p>
+<h3 id="state-状态"><a href="#state-状态" class="headerlink" title="state: 状态"></a>state: 状态</h3><p>Abstract Queued Synchronizer维护了一个volatile int类型的变量，用于表示当前的同步状态。volatile虽然不能保证操作的原子性，但是能保证当前变量state的可见性。</br></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 返回共享资源状态，此操作的内存语义为volatile修饰的原子读操作</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">final</span> <span class="type">int</span> <span class="title function_">getState</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> state;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置共享资源状态，此操作的内存语义为volatile修饰的原子写操作</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title function_">setState</span><span class="params">(<span class="type">int</span> newState)</span> &#123;</span><br><span class="line">        state = newState;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 自动将同步状态设置为给定的更新值状态（如果当前状态值等于预期值）</span></span><br><span class="line"><span class="comment">// 此操作的内存语义为volatile修饰的原子读写操作</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">final</span> <span class="type">boolean</span> <span class="title function_">compareAndSetState</span><span class="params">(<span class="type">int</span> expect, <span class="type">int</span> update)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> unsafe.compareAndSwapInt(<span class="built_in">this</span>, stateOffset, expect, update);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="AQS共享资源的方式：共享式和独占式"><a href="#AQS共享资源的方式：共享式和独占式" class="headerlink" title="AQS共享资源的方式：共享式和独占式"></a>AQS共享资源的方式：共享式和独占式</h3><ul>
+<li>共享式：多个线程可以同时执行，具体的实现Semaphore和CountDownLatch。</li>
+<li>独占式：只有一个线程能执行，具体的实现ReentrantLock。<br>AQS只是定义一个框架，只定义了一个接口，具体资源的获取、释放都交由自定义同步器去实现。不同的自定义同步器争用贡献资源的方式也不同，自定义同步器在实现时只需要实现共享<br>资源state的获取与释放方式即可，至于具体线程等待队列的维护，如获取资源失败入队、唤醒出队等，AQS已经在顶层实现好，不需要具体的同步器再做处理。</br></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">方法名</th>
+<th align="left">资源共享方式</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">isHeldExclusively()</td>
+<td align="left"></td>
+<td align="left">查询该线程是否正在独占资源，只有用到condition才需要去实现它</td>
+</tr>
+<tr>
+<td align="left">tryAcquire(int)</td>
+<td align="left">独占方式</td>
+<td align="left">尝试获取资源：成功返回true，失败返回false</td>
+</tr>
+<tr>
+<td align="left">tryRelease(int)</td>
+<td align="left">独占方式</td>
+<td align="left">尝试释放资源：成功返回true，失败返回false</td>
+</tr>
+<tr>
+<td align="left">tryAcquireShared(int)</td>
+<td align="left">共享方式</td>
+<td align="left">尝试获取资源：负数表示失败；0表示成功，但没有剩余资源可用；正数表示成功，且有剩余资源</td>
+</tr>
+<tr>
+<td align="left">tryReleaseShared(int)</td>
+<td align="left">共享方式</td>
+<td align="left">尝试释放资源：如果释放资源后允许唤醒后续等待线程，则返回true，否则返回false</td>
+</tr>
+</tbody></table>
+<p>一般来说，自定义同步器要么采用独占方式，要么采用共享方式，实现类只需实现tryAcquire、tryRelease或tryAcquireShared、tryReleaseShared中的一组即可。但AQS也支持<br>自定义同步器同时实现独占和共享两种方式，例如ReentrantReadWriteLock在读取时采用共享方式，在写入时采用独占方式。</br></p>
+<h4 id="ReentrantLock"><a href="#ReentrantLock" class="headerlink" title="ReentrantLock"></a>ReentrantLock</h4><p>ReentrantLock中的state初始值为0，表示无锁状态。在线程执行tryAcquire()获取该锁后，ReentrantLock中的state+1，这时该线程独占ReentrantLock锁，其他线程在通过<br>tryAcquire()获取锁时均会失败，直到该线程释放锁后，state再次为0，其他线程才有机会获取该锁。该线程在释放锁之前可以重复获取此锁，每获取一次便会执行一次state+1，因此<br>ReentrantLock也属于可重入锁。但是获取多少次锁就要释放多少次锁，这样才能保证state最终为0。</br></p>
+<h4 id="CountDownLatch"><a href="#CountDownLatch" class="headerlink" title="CountDownLatch"></a>CountDownLatch</h4><p>CountDownLatch将任务分为N个子线程去执行，将state也初始化为N，N与线程的个数一致，N个子线程是并行执行，每个子线程都在执行完后countDown()一次，state会执行CAS操作<br>并减1。在所有子线程都执行完后（state &#x3D; 0）时会unpark()主线程，然后主线程会从await()返回，继续执行后续的动作。</br></p>
+
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/1002_%E7%90%86%E6%83%B3%E6%B1%BD%E8%BD%A6/">理想汽车-面试题</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/1005_%E5%BD%93%E5%BD%93/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://luozuishuai.github.io/2023/04/12/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" data-id="clgdnr1uu000554ujd7o87u8n" data-title="并发编程的基础知识" class="article-share-link">Teilen</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/1005_%E5%BD%93%E5%BD%93/">当当-面试题</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/1004_%E7%BE%8E%E5%9B%A2/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/1004_%E7%BE%8E%E5%9B%A2/">美团-面试题</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">并发编程的基础知识</a>
-    </h1>
-  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ABA/" rel="tag">ABA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AQS/" rel="tag">AQS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CAS/" rel="tag">CAS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CountDownLatch/" rel="tag">CountDownLatch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ReentrantLock/" rel="tag">ReentrantLock</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B9%B6%E5%8F%91/" rel="tag">并发</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/04/12/1004_%E7%BE%8E%E5%9B%A2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          美团-面试题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/04/12/%E7%A7%92%E6%9D%80%E8%AE%BE%E8%AE%A1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">秒杀设计</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/%E7%A7%92%E6%9D%80%E8%AE%BE%E8%AE%A1/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/%E7%A7%92%E6%9D%80%E8%AE%BE%E8%AE%A1/">秒杀设计</a>
-    </h1>
-  
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/%E6%9C%AC%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84SQL%E8%AF%AD%E5%8F%A5%E9%80%BB%E8%BE%91%E6%95%B4%E7%90%86/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/%E6%9C%AC%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84SQL%E8%AF%AD%E5%8F%A5%E9%80%BB%E8%BE%91%E6%95%B4%E7%90%86/">本项目中的SQL语句逻辑整理</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/">策略模式介绍以及简单示例</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3%E5%AE%9E%E7%8E%B0%E6%8E%A5%E5%8F%A3%E9%99%90%E6%B5%81%EF%BC%88%E6%8E%A5%E5%8F%A3%E9%98%B2%E5%88%B7%EF%BC%89/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3%E5%AE%9E%E7%8E%B0%E6%8E%A5%E5%8F%A3%E9%99%90%E6%B5%81%EF%BC%88%E6%8E%A5%E5%8F%A3%E9%98%B2%E5%88%B7%EF%BC%89/">自定义注解实现接口限流（接口防刷）</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2023/page/2/">2</a><a class="extend next" rel="next" href="/archives/2023/page/2/">weiter &raquo;</a>
-  </nav>
 
 </section>
         

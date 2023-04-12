@@ -4,16 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>Archiv: 2023 | Hexo博客</title>
+  <title>本项目中的SQL语句逻辑整理 | Hexo博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Juno个人博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo博客">
-<meta property="og:url" content="https://luozuishuai.github.io/archives/2023/index.html">
+  <meta name="description" content="需求记录一下本项目中的SQL语句逻辑。 文章模块 查看文章的推荐文章12345678910@Repositorypublic interface ArticleDao extends BaseMapper&lt;Article&gt; &amp;#123;    &#x2F;**     * 查看文章的推荐文章     *     * @param articleId 文章id     * @return 文章列表">
+<meta property="og:type" content="article">
+<meta property="og:title" content="本项目中的SQL语句逻辑整理">
+<meta property="og:url" content="https://luozuishuai.github.io/2023/04/12/%E6%9C%AC%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84SQL%E8%AF%AD%E5%8F%A5%E9%80%BB%E8%BE%91%E6%95%B4%E7%90%86/index.html">
 <meta property="og:site_name" content="Hexo博客">
-<meta property="og:description" content="Juno个人博客">
+<meta property="og:description" content="需求记录一下本项目中的SQL语句逻辑。 文章模块 查看文章的推荐文章12345678910@Repositorypublic interface ArticleDao extends BaseMapper&lt;Article&gt; &amp;#123;    &#x2F;**     * 查看文章的推荐文章     *     * @param articleId 文章id     * @return 文章列表">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-04-12T11:40:04.000Z">
+<meta property="article:modified_time" content="2023-04-12T12:44:15.086Z">
 <meta property="article:author" content="Juno">
+<meta property="article:tag" content="SQL语句">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Hexo博客" type="application/atom+xml">
@@ -71,216 +74,95 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/1003_%E5%AD%97%E8%8A%82/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
+        <section id="main"><article id="post-本项目中的SQL语句逻辑整理" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/04/12/%E6%9C%AC%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84SQL%E8%AF%AD%E5%8F%A5%E9%80%BB%E8%BE%91%E6%95%B4%E7%90%86/" class="article-date">
+  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">2023-04-12</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E4%BB%A3%E7%A0%81%E8%AE%B0%E5%BD%95/">代码记录</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/1003_%E5%AD%97%E8%8A%82/">字节-面试题</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      本项目中的SQL语句逻辑整理
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/1001_%E5%A4%A9%E7%9C%BC%E6%9F%A5/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/1001_%E5%A4%A9%E7%9C%BC%E6%9F%A5/">天眼查-面试题</a>
-    </h1>
-  
+        <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>记录一下本项目中的SQL语句逻辑。</p>
+<h2 id="文章模块"><a href="#文章模块" class="headerlink" title="文章模块"></a>文章模块</h2><ol>
+<li>查看文章的推荐文章<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">ArticleDao</span> <span class="keyword">extends</span> <span class="title class_">BaseMapper</span>&lt;Article&gt; &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 查看文章的推荐文章</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> articleId 文章id</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 文章列表</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    List&lt;ArticleRecommendDTO&gt; <span class="title function_">listRecommendArticles</span><span class="params">(<span class="meta">@Param(&quot;articleId&quot;)</span> Integer articleId)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;listRecommendArticles&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;com.minzheng.blog.dto.ArticleRecommendDTO&quot;</span>&gt;</span></span><br><span class="line">        SELECT</span><br><span class="line">          id,</span><br><span class="line">          article_title,</span><br><span class="line">          article_cover,</span><br><span class="line">          create_time</span><br><span class="line">        FROM</span><br><span class="line">            (</span><br><span class="line">              SELECT DISTINCT</span><br><span class="line">                article_id</span><br><span class="line">                FROM</span><br><span class="line">                 ( SELECT tag_id FROM tb_article_tag WHERE article_id = #&#123;articleId&#125; ) t</span><br><span class="line">                 JOIN tb_article_tag t1 ON t.tag_id = t1.tag_id</span><br><span class="line">                 WHERE</span><br><span class="line">                 article_id != #&#123;articleId&#125;</span><br><span class="line">            ) t2</span><br><span class="line">               JOIN tb_article a ON t2.article_id = a.id</span><br><span class="line">           WHERE a.is_delete = 0</span><br><span class="line">           ORDER BY</span><br><span class="line">           is_top DESC,id DESC</span><br><span class="line">           LIMIT 6</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>SQL语句逻辑：</p>
+<ol>
+<li>先查询文章标签表，得到当前文章的所有标签id</li>
+<li>再次连接文章标签表，得到与当前文章同标签的所有文章id（排除掉当前文章）</li>
+<li>通过文章id，内连接文章表 获取文章详细信息（排除已删除的文章）（按是否置顶和id排序，取前6条）</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+<h2 id="角色模块"><a href="#角色模块" class="headerlink" title="角色模块"></a>角色模块</h2><ol>
+<li>查询路由角色列表（查询出所有页面能被哪些角色访问）<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">RoleDao</span> <span class="keyword">extends</span> <span class="title class_">BaseMapper</span>&lt;Role&gt; &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 查询路由角色列表</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 角色标签</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    List&lt;ResourceRoleDTO&gt; <span class="title function_">listResourceRoles</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;listResourceRoles&quot;</span> <span class="attr">resultMap</span>=<span class="string">&quot;RolePermissionMap&quot;</span>&gt;</span></span><br><span class="line">        SELECT</span><br><span class="line">         re.id,</span><br><span class="line">         url,</span><br><span class="line">         request_method,</span><br><span class="line">         role_label</span><br><span class="line">         FROM tb_resource re</span><br><span class="line">         LEFT JOIN tb_role_resource rep</span><br><span class="line">         on re.id = rep.resource_id</span><br><span class="line">         LEFT JOIN tb_role r</span><br><span class="line">         on rep.role_id = r.id</span><br><span class="line">         WHERE</span><br><span class="line">         parent_id is NOT NULL</span><br><span class="line">         AND is_anonymous = 0</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>SQL语句逻辑：</p>
+<ol>
+<li>查询资源表，连接角色资源中间表</li>
+<li>用角色资源中间表，连接角色表，显示出角色信息</li>
+<li>过滤掉非页面的资源（菜单组）（只查询页面），过滤掉不需要登录即可访问的资源（只查询需要登录才可以访问的资源）</li>
+</ol>
+</blockquote>
+</li>
+</ol>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/1002_%E7%90%86%E6%83%B3%E6%B1%BD%E8%BD%A6/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/1002_%E7%90%86%E6%83%B3%E6%B1%BD%E8%BD%A6/">理想汽车-面试题</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/1005_%E5%BD%93%E5%BD%93/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://luozuishuai.github.io/2023/04/12/%E6%9C%AC%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84SQL%E8%AF%AD%E5%8F%A5%E9%80%BB%E8%BE%91%E6%95%B4%E7%90%86/" data-id="clgdnr1uw000754uj0wq45lbw" data-title="本项目中的SQL语句逻辑整理" class="article-share-link">Teilen</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/1005_%E5%BD%93%E5%BD%93/">当当-面试题</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/1004_%E7%BE%8E%E5%9B%A2/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/1004_%E7%BE%8E%E5%9B%A2/">美团-面试题</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">并发编程的基础知识</a>
-    </h1>
-  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL%E8%AF%AD%E5%8F%A5/" rel="tag">SQL语句</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/04/12/%E7%A7%92%E6%9D%80%E8%AE%BE%E8%AE%A1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          秒杀设计
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/04/12/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">策略模式介绍以及简单示例</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/%E7%A7%92%E6%9D%80%E8%AE%BE%E8%AE%A1/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/%E7%A7%92%E6%9D%80%E8%AE%BE%E8%AE%A1/">秒杀设计</a>
-    </h1>
-  
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/%E6%9C%AC%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84SQL%E8%AF%AD%E5%8F%A5%E9%80%BB%E8%BE%91%E6%95%B4%E7%90%86/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/%E6%9C%AC%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84SQL%E8%AF%AD%E5%8F%A5%E9%80%BB%E8%BE%91%E6%95%B4%E7%90%86/">本项目中的SQL语句逻辑整理</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/">策略模式介绍以及简单示例</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3%E5%AE%9E%E7%8E%B0%E6%8E%A5%E5%8F%A3%E9%99%90%E6%B5%81%EF%BC%88%E6%8E%A5%E5%8F%A3%E9%98%B2%E5%88%B7%EF%BC%89/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3%E5%AE%9E%E7%8E%B0%E6%8E%A5%E5%8F%A3%E9%99%90%E6%B5%81%EF%BC%88%E6%8E%A5%E5%8F%A3%E9%98%B2%E5%88%B7%EF%BC%89/">自定义注解实现接口限流（接口防刷）</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2023/page/2/">2</a><a class="extend next" rel="next" href="/archives/2023/page/2/">weiter &raquo;</a>
-  </nav>
 
 </section>
         

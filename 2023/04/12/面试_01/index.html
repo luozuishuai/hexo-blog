@@ -4,16 +4,24 @@
   <meta charset="utf-8">
   
   
-  <title>Archiv: 2023 | Hexo博客</title>
+  <title>面试题分享-附参考答案 | Hexo博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Juno个人博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo博客">
-<meta property="og:url" content="https://luozuishuai.github.io/archives/2023/index.html">
+  <meta name="description" content="FullGC多的原因，如何优化原因：FullGC触发的原因是老年代满了，需要整堆回收 对象被放到老年代有原因：  大对象直接分配到老年代 对象经历了很多次GC，年龄超过15 在Survivor区中，超过某个年龄的对象占比超过50%，超过年龄的对象都转移到老年代 空间分配担保，导致老年代满了，或者需要担保的空间太大无法满足要求  优化：  增大JVM参数中堆内存的设置，看是否需要修改老年代和新生代的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试题分享-附参考答案">
+<meta property="og:url" content="https://luozuishuai.github.io/2023/04/12/%E9%9D%A2%E8%AF%95_01/index.html">
 <meta property="og:site_name" content="Hexo博客">
-<meta property="og:description" content="Juno个人博客">
+<meta property="og:description" content="FullGC多的原因，如何优化原因：FullGC触发的原因是老年代满了，需要整堆回收 对象被放到老年代有原因：  大对象直接分配到老年代 对象经历了很多次GC，年龄超过15 在Survivor区中，超过某个年龄的对象占比超过50%，超过年龄的对象都转移到老年代 空间分配担保，导致老年代满了，或者需要担保的空间太大无法满足要求  优化：  增大JVM参数中堆内存的设置，看是否需要修改老年代和新生代的">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-04-12T11:40:04.000Z">
+<meta property="article:modified_time" content="2023-04-12T12:44:37.885Z">
 <meta property="article:author" content="Juno">
+<meta property="article:tag" content="GC">
+<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="线程池">
+<meta property="article:tag" content="Redis">
+<meta property="article:tag" content="MQ">
+<meta property="article:tag" content="cpu">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Hexo博客" type="application/atom+xml">
@@ -71,216 +79,148 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/1003_%E5%AD%97%E8%8A%82/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
+        <section id="main"><article id="post-面试_01" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/04/12/%E9%9D%A2%E8%AF%95_01/" class="article-date">
+  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">2023-04-12</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>►<a class="article-category-link" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/%E7%9F%A5%E8%AF%86%E7%82%B9/">知识点</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/1003_%E5%AD%97%E8%8A%82/">字节-面试题</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      面试题分享-附参考答案
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/1001_%E5%A4%A9%E7%9C%BC%E6%9F%A5/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/1001_%E5%A4%A9%E7%9C%BC%E6%9F%A5/">天眼查-面试题</a>
-    </h1>
-  
+        <h4 id="FullGC多的原因，如何优化"><a href="#FullGC多的原因，如何优化" class="headerlink" title="FullGC多的原因，如何优化"></a>FullGC多的原因，如何优化</h4><p>原因：FullGC触发的原因是老年代满了，需要整堆回收</p>
+<p>对象被放到老年代有原因：</p>
+<ol>
+<li>大对象直接分配到老年代</li>
+<li>对象经历了很多次GC，年龄超过15</li>
+<li>在Survivor区中，超过某个年龄的对象占比超过50%，超过年龄的对象都转移到老年代</li>
+<li>空间分配担保，导致老年代满了，或者需要担保的空间太大无法满足要求</li>
+</ol>
+<p>优化：</p>
+<ol>
+<li>增大JVM参数中堆内存的设置，看是否需要修改老年代和新生代的比例</li>
+<li>减少不必要的对象创建，对象用完赋null值帮助回收</li>
+<li>尽量不定义大对象</li>
+<li>如果现在使用的是CMS，评估是否可以使用G1收集器</li>
+</ol>
+<h4 id="MQ怎么保证消息不丢失？"><a href="#MQ怎么保证消息不丢失？" class="headerlink" title="MQ怎么保证消息不丢失？"></a>MQ怎么保证消息不丢失？</h4><p>MQ保证消息不丢失从两个方面来看：客户端的使用和服务端的配置</p>
+<h5 id="客户端使用"><a href="#客户端使用" class="headerlink" title="客户端使用"></a>客户端使用</h5><ol>
+<li>发送消息时，使用同步发送或者异步发送+check的机制，保证客户端发送消息时成功被服务端接收了</li>
+<li>处理消息时，先进行消息的业务处理，等业务逻辑处理完之后，再返回消息的消费ack，如果ack异常了，可以考虑对消息进行持久化处理</li>
+</ol>
+<h5 id="服务端配置"><a href="#服务端配置" class="headerlink" title="服务端配置"></a>服务端配置</h5><ol>
+<li>在接收到消息后，采用同步刷盘的机制来保存消息到磁盘</li>
+<li>主从同步，保证即使遭遇系统宕机、磁盘损坏的情况下也保证消息的不丢失</li>
+</ol>
+<h4 id="MQ如何处理重复消费"><a href="#MQ如何处理重复消费" class="headerlink" title="MQ如何处理重复消费"></a>MQ如何处理重复消费</h4><ol>
+<li>看业务是否具有天然的幂等性，例如在订单类系统中，可以通过使用状态判断来看消息是否已经被处理过了</li>
+<li>如果不具备幂等性，可以考虑使用setnx来做，当收到消息之后，获取消息的唯一标示，通过唯一标示来做一个分布式锁，消费结束时如果消费成功，执行ack，这个锁就放着不动；消费失败，释放锁，不执行ack</li>
+</ol>
+<h4 id="ID生成器的原理"><a href="#ID生成器的原理" class="headerlink" title="ID生成器的原理"></a>ID生成器的原理</h4><p>ID生成器是为了全局生成唯一ID的</p>
+<p>比较常见的有UUID、数据库自增主键、雪花算法</p>
+<p>雪花算法的结构：时间戳 + 机器ID + 序列号</p>
+<h4 id="缓存雪崩、缓存击穿、缓存穿透"><a href="#缓存雪崩、缓存击穿、缓存穿透" class="headerlink" title="缓存雪崩、缓存击穿、缓存穿透"></a>缓存雪崩、缓存击穿、缓存穿透</h4><h5 id="缓存雪崩"><a href="#缓存雪崩" class="headerlink" title="缓存雪崩"></a>缓存雪崩</h5><p>大量缓存在同一时间失效，导致大量请求打到MySQL，或者Redis服务不可用了，导致请求直接访问到MySQL</p>
+<p>解决方案：</p>
+<ol>
+<li>失效时间的设置尽量在原定时间上加上一个随机数，避免大量key同时失效</li>
+<li>搭建Redis集群，提高可用性</li>
+</ol>
+<h5 id="缓存击穿"><a href="#缓存击穿" class="headerlink" title="缓存击穿"></a>缓存击穿</h5><p>缓存击穿主要是因为某个热点key在Redis突然消失了，请求全都打到了MySQL</p>
+<p>解决方案：</p>
+<ol>
+<li>热点key不设置失效时间</li>
+<li>避免误删操作（代码、人工）</li>
+<li>布隆过滤器</li>
+</ol>
+<h5 id="缓存穿透"><a href="#缓存穿透" class="headerlink" title="缓存穿透"></a>缓存穿透</h5><p>连续请求某一个不存在key，导致请求直接打到数据库</p>
+<p>解决方案：</p>
+<ol>
+<li>如果发现持续访问一个不存在的key，可以在Redis中放一个默认值，或者执行降级</li>
+<li>在前端或者web层就校验key的合法性，避免不合法的key放进来</li>
+</ol>
+<h4 id="MySQL分库分表"><a href="#MySQL分库分表" class="headerlink" title="MySQL分库分表"></a>MySQL分库分表</h4><p>分库分表的策略采用主键id和表个数取模的策略</p>
+<p>如果数据量持续增加，可以考虑增加分表的张数，分表数量 * 2，减少数据迁移工作</p>
+<p>或者最开始就使用一致性Hash</p>
+<p>还可以考虑范围分片的方法，并对历史数据执行归档</p>
+<h4 id="CPU-100-的问题"><a href="#CPU-100-的问题" class="headerlink" title="CPU 100% 的问题"></a>CPU 100% 的问题</h4><p>简要步骤：</p>
+<ol>
+<li>找到最耗CPU的进程</li>
+<li>找到最耗CPU的线程</li>
+<li>查看堆栈，定位线程在干什么，定位代码</li>
+</ol>
+<h5 id="步骤一、找到进程"><a href="#步骤一、找到进程" class="headerlink" title="步骤一、找到进程"></a>步骤一、找到进程</h5><ul>
+<li>执行top -c，显示进程运行信息列表</li>
+<li>键入P(大写)，进程按照CPU使用率排序</li>
+<li>找出最耗CPU的进程id，例如10778</li>
+</ul>
+<h5 id="步骤二、找到线程"><a href="#步骤二、找到线程" class="headerlink" title="步骤二、找到线程"></a>步骤二、找到线程</h5><ul>
+<li>执行top -Hp 10778，显示一个进程的线程运行信息列表</li>
+<li>键入P(大写)，线程按照CPU使用率排序</li>
+<li>找出最耗CPU的线程id，例如10084</li>
+</ul>
+<h5 id="步骤三、看看线程在干什么"><a href="#步骤三、看看线程在干什么" class="headerlink" title="步骤三、看看线程在干什么"></a>步骤三、看看线程在干什么</h5><ul>
+<li>首先将线程PID转化为16进制，使用printf “%x\n” 10084，得到对应16进制为： 2764</li>
+<li>通过jstack查看堆栈信息，jstack 10778 | grep ‘0x2764’ -C5 —color，得到线程堆栈</li>
+<li>找到线程对应的线程名称，找到对应代码</li>
+</ul>
+<h4 id="线程池的参数评估"><a href="#线程池的参数评估" class="headerlink" title="线程池的参数评估"></a>线程池的参数评估</h4><h5 id="首先要明确任务的类型"><a href="#首先要明确任务的类型" class="headerlink" title="首先要明确任务的类型"></a>首先要明确任务的类型</h5><p>如果是CPU密集型任务，那么核心线程数设置为：CPU核数+1</p>
+<p>如果是IO密集性任务，那么就需要大致估算出IO时间和CPU时间的比例，最佳线程数就是</p>
+<p>[(IO耗时&#x2F;CPU耗时)+1]*CPU核数</p>
+<p>上面说的是核心线程数，那么最大线程数则可以比核心线程数稍微多一些</p>
+<p>然后就是阻塞队列了，阻塞队列不宜使用LinkedBlockingQueue（其实LinkedBlockingQueue也是有界的，为Integer的最大值，并且也可以设置容量），而应该使用有界的ArrayBlockingQueue，这个队列大小也需要根据访问量来估计，减去核心线程数在处理的任务，得出一个数值</p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/1002_%E7%90%86%E6%83%B3%E6%B1%BD%E8%BD%A6/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/1002_%E7%90%86%E6%83%B3%E6%B1%BD%E8%BD%A6/">理想汽车-面试题</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/1005_%E5%BD%93%E5%BD%93/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://luozuishuai.github.io/2023/04/12/%E9%9D%A2%E8%AF%95_01/" data-id="clgdnr1v1000b54uj5gii6x6t" data-title="面试题分享-附参考答案" class="article-share-link">Teilen</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/1005_%E5%BD%93%E5%BD%93/">当当-面试题</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/1004_%E7%BE%8E%E5%9B%A2/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/1004_%E7%BE%8E%E5%9B%A2/">美团-面试题</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">并发编程的基础知识</a>
-    </h1>
-  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GC/" rel="tag">GC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MQ/" rel="tag">MQ</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cpu/" rel="tag">cpu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" rel="tag">线程池</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/04/12/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3%E5%AE%9E%E7%8E%B0%E6%8E%A5%E5%8F%A3%E9%99%90%E6%B5%81%EF%BC%88%E6%8E%A5%E5%8F%A3%E9%98%B2%E5%88%B7%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          自定义注解实现接口限流（接口防刷）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/04/12/%E9%9D%A2%E8%AF%95_02/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">面试题分享2-附参考答案</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/%E7%A7%92%E6%9D%80%E8%AE%BE%E8%AE%A1/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/%E7%A7%92%E6%9D%80%E8%AE%BE%E8%AE%A1/">秒杀设计</a>
-    </h1>
-  
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/%E6%9C%AC%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84SQL%E8%AF%AD%E5%8F%A5%E9%80%BB%E8%BE%91%E6%95%B4%E7%90%86/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/%E6%9C%AC%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84SQL%E8%AF%AD%E5%8F%A5%E9%80%BB%E8%BE%91%E6%95%B4%E7%90%86/">本项目中的SQL语句逻辑整理</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/">策略模式介绍以及简单示例</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3%E5%AE%9E%E7%8E%B0%E6%8E%A5%E5%8F%A3%E9%99%90%E6%B5%81%EF%BC%88%E6%8E%A5%E5%8F%A3%E9%98%B2%E5%88%B7%EF%BC%89/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3%E5%AE%9E%E7%8E%B0%E6%8E%A5%E5%8F%A3%E9%99%90%E6%B5%81%EF%BC%88%E6%8E%A5%E5%8F%A3%E9%98%B2%E5%88%B7%EF%BC%89/">自定义注解实现接口限流（接口防刷）</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2023/page/2/">2</a><a class="extend next" rel="next" href="/archives/2023/page/2/">weiter &raquo;</a>
-  </nav>
 
 </section>
         

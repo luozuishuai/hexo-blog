@@ -4,16 +4,25 @@
   <meta charset="utf-8">
   
   
-  <title>Archiv: 2023 | Hexo博客</title>
+  <title>字节-面试题 | Hexo博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Juno个人博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo博客">
-<meta property="og:url" content="https://luozuishuai.github.io/archives/2023/index.html">
+  <meta name="description" content="一面1.redis的key删除策略2.redis的渐进式rehash3.rehash的时候来了删除指令怎么办4.redis跳表的时间复杂度？为什么用跳表？5.进程和线程的区别？二面1.SCF框架使用的协议？如果你写rpc框架会采用那种协议？2.客户端没用netty如何进行拆包、粘包的？3.netty处理拆包，已经读的数据放在哪？4.MySQL的MVCC？5.volatile关键字解决了什么？6.为">
+<meta property="og:type" content="article">
+<meta property="og:title" content="字节-面试题">
+<meta property="og:url" content="https://luozuishuai.github.io/2023/04/12/1003_%E5%AD%97%E8%8A%82/index.html">
 <meta property="og:site_name" content="Hexo博客">
-<meta property="og:description" content="Juno个人博客">
+<meta property="og:description" content="一面1.redis的key删除策略2.redis的渐进式rehash3.rehash的时候来了删除指令怎么办4.redis跳表的时间复杂度？为什么用跳表？5.进程和线程的区别？二面1.SCF框架使用的协议？如果你写rpc框架会采用那种协议？2.客户端没用netty如何进行拆包、粘包的？3.netty处理拆包，已经读的数据放在哪？4.MySQL的MVCC？5.volatile关键字解决了什么？6.为">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-04-12T11:40:04.000Z">
+<meta property="article:modified_time" content="2023-04-12T12:43:56.259Z">
 <meta property="article:author" content="Juno">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="Redis">
+<meta property="article:tag" content="反射">
+<meta property="article:tag" content="rehash">
+<meta property="article:tag" content="MVCC">
+<meta property="article:tag" content="volatile">
+<meta property="article:tag" content="netty">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Hexo博客" type="application/atom+xml">
@@ -71,216 +80,59 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/1003_%E5%AD%97%E8%8A%82/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
+        <section id="main"><article id="post-1003_字节" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/04/12/1003_%E5%AD%97%E8%8A%82/" class="article-date">
+  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">2023-04-12</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/1003_%E5%AD%97%E8%8A%82/">字节-面试题</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      字节-面试题
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/1001_%E5%A4%A9%E7%9C%BC%E6%9F%A5/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/1001_%E5%A4%A9%E7%9C%BC%E6%9F%A5/">天眼查-面试题</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/1002_%E7%90%86%E6%83%B3%E6%B1%BD%E8%BD%A6/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
+        <h3 id="一面"><a href="#一面" class="headerlink" title="一面"></a>一面</h3><h4 id="1-redis的key删除策略"><a href="#1-redis的key删除策略" class="headerlink" title="1.redis的key删除策略"></a>1.redis的key删除策略</h4><h4 id="2-redis的渐进式rehash"><a href="#2-redis的渐进式rehash" class="headerlink" title="2.redis的渐进式rehash"></a>2.redis的渐进式rehash</h4><h4 id="3-rehash的时候来了删除指令怎么办"><a href="#3-rehash的时候来了删除指令怎么办" class="headerlink" title="3.rehash的时候来了删除指令怎么办"></a>3.rehash的时候来了删除指令怎么办</h4><h4 id="4-redis跳表的时间复杂度？为什么用跳表？"><a href="#4-redis跳表的时间复杂度？为什么用跳表？" class="headerlink" title="4.redis跳表的时间复杂度？为什么用跳表？"></a>4.redis跳表的时间复杂度？为什么用跳表？</h4><h4 id="5-进程和线程的区别？"><a href="#5-进程和线程的区别？" class="headerlink" title="5.进程和线程的区别？"></a>5.进程和线程的区别？</h4><h3 id="二面"><a href="#二面" class="headerlink" title="二面"></a>二面</h3><h4 id="1-SCF框架使用的协议？如果你写rpc框架会采用那种协议？"><a href="#1-SCF框架使用的协议？如果你写rpc框架会采用那种协议？" class="headerlink" title="1.SCF框架使用的协议？如果你写rpc框架会采用那种协议？"></a>1.SCF框架使用的协议？如果你写rpc框架会采用那种协议？</h4><h4 id="2-客户端没用netty如何进行拆包、粘包的？"><a href="#2-客户端没用netty如何进行拆包、粘包的？" class="headerlink" title="2.客户端没用netty如何进行拆包、粘包的？"></a>2.客户端没用netty如何进行拆包、粘包的？</h4><h4 id="3-netty处理拆包，已经读的数据放在哪？"><a href="#3-netty处理拆包，已经读的数据放在哪？" class="headerlink" title="3.netty处理拆包，已经读的数据放在哪？"></a>3.netty处理拆包，已经读的数据放在哪？</h4><h4 id="4-MySQL的MVCC？"><a href="#4-MySQL的MVCC？" class="headerlink" title="4.MySQL的MVCC？"></a>4.MySQL的MVCC？</h4><h4 id="5-volatile关键字解决了什么？"><a href="#5-volatile关键字解决了什么？" class="headerlink" title="5.volatile关键字解决了什么？"></a>5.volatile关键字解决了什么？</h4><h4 id="6-为什么会有可见性问题？volatile怎么解决的？"><a href="#6-为什么会有可见性问题？volatile怎么解决的？" class="headerlink" title="6.为什么会有可见性问题？volatile怎么解决的？"></a>6.为什么会有可见性问题？volatile怎么解决的？</h4><h4 id="7-volatile怎么解决有序性问题？"><a href="#7-volatile怎么解决有序性问题？" class="headerlink" title="7.volatile怎么解决有序性问题？"></a>7.volatile怎么解决有序性问题？</h4><h4 id="8-ZGC为什么停顿时间短？"><a href="#8-ZGC为什么停顿时间短？" class="headerlink" title="8.ZGC为什么停顿时间短？"></a>8.ZGC为什么停顿时间短？</h4><h4 id="9-反射的效率问题？以及如何优化？"><a href="#9-反射的效率问题？以及如何优化？" class="headerlink" title="9.反射的效率问题？以及如何优化？"></a>9.反射的效率问题？以及如何优化？</h4><h4 id="10-云原生数据库？"><a href="#10-云原生数据库？" class="headerlink" title="10.云原生数据库？"></a>10.云原生数据库？</h4>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/1002_%E7%90%86%E6%83%B3%E6%B1%BD%E8%BD%A6/">理想汽车-面试题</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/1005_%E5%BD%93%E5%BD%93/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://luozuishuai.github.io/2023/04/12/1003_%E5%AD%97%E8%8A%82/" data-id="clgdnr1uj000054ujhrilget5" data-title="字节-面试题" class="article-share-link">Teilen</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/1005_%E5%BD%93%E5%BD%93/">当当-面试题</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/1004_%E7%BE%8E%E5%9B%A2/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/1004_%E7%BE%8E%E5%9B%A2/">美团-面试题</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">并发编程的基础知识</a>
-    </h1>
-  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MVCC/" rel="tag">MVCC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/netty/" rel="tag">netty</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rehash/" rel="tag">rehash</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/volatile/" rel="tag">volatile</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8D%E5%B0%84/" rel="tag">反射</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2023/04/12/1001_%E5%A4%A9%E7%9C%BC%E6%9F%A5/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">天眼查-面试题</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/%E7%A7%92%E6%9D%80%E8%AE%BE%E8%AE%A1/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/%E7%A7%92%E6%9D%80%E8%AE%BE%E8%AE%A1/">秒杀设计</a>
-    </h1>
-  
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/%E6%9C%AC%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84SQL%E8%AF%AD%E5%8F%A5%E9%80%BB%E8%BE%91%E6%95%B4%E7%90%86/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/%E6%9C%AC%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84SQL%E8%AF%AD%E5%8F%A5%E9%80%BB%E8%BE%91%E6%95%B4%E7%90%86/">本项目中的SQL语句逻辑整理</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/">策略模式介绍以及简单示例</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/04/12/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3%E5%AE%9E%E7%8E%B0%E6%8E%A5%E5%8F%A3%E9%99%90%E6%B5%81%EF%BC%88%E6%8E%A5%E5%8F%A3%E9%98%B2%E5%88%B7%EF%BC%89/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-04-12T11:40:04.000Z" itemprop="datePublished">4月 12</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/12/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3%E5%AE%9E%E7%8E%B0%E6%8E%A5%E5%8F%A3%E9%99%90%E6%B5%81%EF%BC%88%E6%8E%A5%E5%8F%A3%E9%98%B2%E5%88%B7%EF%BC%89/">自定义注解实现接口限流（接口防刷）</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2023/page/2/">2</a><a class="extend next" rel="next" href="/archives/2023/page/2/">weiter &raquo;</a>
-  </nav>
 
 </section>
         
